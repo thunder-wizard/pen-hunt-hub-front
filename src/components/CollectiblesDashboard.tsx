@@ -17,7 +17,7 @@ export const CollectiblesDashboard = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch(`${process.env.BACKEND_ADDRESS || "http://localhost:8000/items"}/items`);
+        const response = await fetch(`${process.env.BACKEND_ADDRESS || "http://localhost:8000"}/items`);
         console.log(response);
         if (!response.ok) {
           throw new Error('Failed to fetch items');
@@ -42,7 +42,7 @@ export const CollectiblesDashboard = () => {
       if (itemToUpdate) {
         const updatedItem = { ...itemToUpdate, saved: !itemToUpdate.saved };
 
-        const response = await fetch(`${process.env.BACKEND_ADDRESS || "http://localhost:8000/items"}/items/${id}?saved=${updatedItem.saved}`, {
+        const response = await fetch(`${process.env.BACKEND_ADDRESS || "http://localhost:8000"}/items/${id}?saved=${updatedItem.saved}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(updatedItem),
